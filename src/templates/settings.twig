@@ -1,0 +1,83 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * FlowReCaptcha plugin for Craft CMS 3.x
+ *
+ * FlowReCaptcha Settings.twig
+ *
+ * @author    Flow Communications
+ * @copyright Copyright (c) 2018 Flow Communications
+ * @link      https://www.flowsa.com
+ * @package   FlowReCaptcha
+ * @since     0.0.1
+ */
+#}
+
+{# {% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("flowsa\\flowrecaptcha\\assetbundles\\flowrecaptcha\\FlowReCaptchaAsset") %}
+
+
+{{ forms.textField({
+    label: 'Site Key',
+    instructions: 'Enter your reCAPTCHA site key.',
+    id: 'siteKey',
+    name: 'siteKey',
+    value: settings['siteKey'],
+    required: true})
+}}
+
+{{ forms.textField({
+    label: 'Secret Key',
+    instructions: 'Enter your reCAPTCHA secret key.',
+    id: 'secretKey',
+    name: 'secretKey',
+    value: settings['secretKey'],
+    required: true})
+}} #}
+
+
+{% import "_includes/forms" as forms %}
+
+{% macro configWarning(setting) -%}
+    {% set setting = '<code>'~setting~'</code>' %}
+    {{ "This is being overridden by the {setting} config setting in your {file} config file."|t('flow-re-captcha', {
+        setting: setting,
+        file: 'flow-re-captcha.php'
+    })|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
+{{ forms.textField({
+    first:        true,
+    label:        "Honeypot Form Param"|t('flow-re-captcha'),
+    id:           'honeypot-param',
+    class:        'code',
+    name:         'honeypotParam',
+    required: true,
+    instructions: "The name that the honeypot field should have."|t('flow-re-captcha'),
+    value:        (settings['honeypotParam'] ?? ''),
+    disabled:     'honeypotParam' in overrides,
+    warning:      'honeypotParam' in overrides ? configWarning('honeypotParam'),
+    errors:       settings.getErrors('prependSender')
+}) }}
+
+
+{{ forms.textField({
+    label: 'Site Key',
+    instructions: 'Enter your reCAPTCHA site key.',
+    id: 'siteKey',
+    name: 'siteKey',
+    value: settings['siteKey'],
+    })
+}}
+
+{{ forms.textField({
+    label: 'Secret Key',
+    instructions: 'Enter your reCAPTCHA secret key.',
+    id: 'secretKey',
+    name: 'secretKey',
+    value: settings['secretKey'],
+    })
+}}

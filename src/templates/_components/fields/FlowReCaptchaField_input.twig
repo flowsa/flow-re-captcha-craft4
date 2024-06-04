@@ -1,0 +1,29 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * FlowReCaptcha plugin for Craft CMS 3.x
+ *
+ * FlowReCaptchaField Field Input
+ *
+ * @author    Flow Communications
+ * @copyright Copyright (c) 2018 Flow Communications
+ * @link      https://www.flowsa.com
+ * @package   FlowReCaptcha
+ * @since     0.0.1
+ */
+#}
+
+
+
+{% do view.registerAssetBundle("flowsa\\flowrecaptcha\\assetbundles\\flowrecaptcha\\FlowReCaptchaAsset") %}
+
+
+<input type="hidden" name="{{ name }}" value="1">
+<div 
+    class="g-recaptcha"
+    id="recaptcha{{ random() }}"
+    data-sitekey="{{ siteKey }}"
+    data-callback="onSubmit"
+    data-size="invisible">
+</div>
+
