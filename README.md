@@ -19,10 +19,10 @@ To install the plugin, follow these instructions.
 2. Add the following code to `composer.json`
 
         "repositories": {
-                "google-map-embed": {
-                    "type": "path",
-                    "url": "./plugins/google-map-embed"
-                },
+           "flow-re-captcha": {
+              "type": "vcs",
+              "url": "https://github.com/flowsa/flow-re-captcha-craft4.git"
+           },
         }
 
 3. Then tell Composer to load the plugin:
