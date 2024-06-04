@@ -1,4 +1,4 @@
-# FlowReCaptcha plugin for Craft CMS 3.x
+# FlowReCaptcha plugin for Craft CMS 4.x
 
 A re-captcha field type for validating forms
 
