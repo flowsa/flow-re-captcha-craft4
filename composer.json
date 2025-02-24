@@ -2,7 +2,7 @@
     "name": "flowsa/flow-re-captcha",
     "description": "A re-captcha field type for validating forms",
     "type": "craft-plugin",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "keywords": [
         "craft",
         "cms",
